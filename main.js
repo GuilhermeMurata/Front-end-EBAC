@@ -1,19 +1,20 @@
 const form = document.getElementById('form-number');
+const valorA = document.getElementById('valor-a');
+const valorB = document.getElementById('valor-b');
 
 function compareNumber(valorA, valorB){
-    if (valorA < valorB) {
-        return mensagemSucesso;
-    } else (valorA > valorB); {
-        return mensagemError;
-    }
+
+    console.log('Comparando se ', valorA, ' é menor que ', valorB)
+    return valorA < valorB;
 }
 
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-    const valorA = document.getElementById('valor-a');
-    const valorB = document.getElementById('valor-b');
+    
     const mensagemSucesso = `Correto, o valor de B está maior que o de valor A`;
     const mensagemError = `Errado, o valor de A está maior que o valor de B`;
+
+    let formEValido = compareNumber(parseInt(valorA.value), parseInt(valorB.value))
 
     if (formEValido){
         const containerMensagemSucesso = document.querySelector('.success-message');
@@ -27,18 +28,5 @@ form.addEventListener('submit', function(e) {
         const containerMensagemError = document.querySelector('.error-message');
         containerMensagemError.innerHTML = mensagemError;
         containerMensagemError.style.display = 'block';
-    }
-})
-
-valorA, valorB.addEventListener('keyup', function(e) {
-    console.log(e.target.value);
-    formEValido = compareNumber(e.target.value);
-
-    if (!formEValido) {
-        valorA, valorB.classList.add('error')
-        document.querySelector('.error-message').style.display = 'block';
-    } else {
-        valorA, valorB.classList.remove = '';
-        document.querySelector('.error-message').style.display = 'none';
     }
 })
